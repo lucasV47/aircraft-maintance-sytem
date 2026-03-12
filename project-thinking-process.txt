@@ -1,0 +1,30 @@
+1. camada de dados postgresql - modelo real
+- aeronaves 
+- tecnicos 
+- manutenções [sempre envolve uma aeronave] [sempre envolve um tecnico responsavel]
+
+2. camada de operação ou (registro de eventos)
+- aeronave chega
+- manutenção começa
+- manutenção termina
+gerando wip, status, inicio, fim
+
+3. utilizando dados para responder perguntas operacionais
+
+- quanto tempo demora uma manutenção?
+- qual técnico trabalha mais?
+- tem manutenção atrasada?
+
+#4 camada python
+automatização do uso do banco de dados 
+- registrar mantenção nova
+- ver manutenções abertas
+- ver status de manutenções em aberto kinda like a kanban wink wink
+- calcular tempo médio
+- mostrar produtividade
+
+# fluxo do sistema
+- python executa query
+- postgresql processa dados
+- python recebe resultado
+- monstra de análise
