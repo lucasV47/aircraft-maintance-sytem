@@ -1,61 +1,79 @@
-1. Descrição
+# Sistema de Manutenção de Aeronaves
 
-Este projeto simula o processamento de dados de um hangar de manutenção de aeronaves.
+## 1. Descrição
 
-O objetivo é registrar operações de manutenção e gerar métricas operacionais para analisar a eficiência dos processos de manutenção.
-2. entidades
-- aeronave
-  representa os aviões em manutençãono hangar
-- tecnico
-  representa os responsaveis pelas manutenções
-- manutenção
-  representa as manutenções realizadas nas aeronaves
-- manutencao_tecnicos
-  tabela de relacionamento que registra quais técnicos participaram de cada manutenção e suas funções
+Este projeto simula o registro de manutenções realizadas em aeronaves dentro de um hangar.
 
-3. relacionamentos
-- uma aeronave pode ter diversas manutenções 1-n
-- um tecico pode atuar em diversas manutenções 1-n
-- uma manutenção pertence a uma aeronave (N:1)e ter um tecnico responsavel 1-1 mais os outros de outras certificações
+O objetivo é armazenar dados das manutenções e gerar métricas que permitam analisar o funcionamento das operações de manutenção.
 
-4. justify modeling
-- manutenção deve ter campo data_inicio e fim para medir o tempo do processo 
-- manutenção deve ter campo responsáveis para observar desempenho de tecnicos
-- total_horas_voo 
+---
 
-5. estrutura das tabelas
-- aeronave
-  id_aeronave PK
-  registro
-  modelo
-  ano_fabricação
-  total_horas_voo
+## 2. Entidades
 
-- tecnico
-  id_tecnico PK
-  nome
-  especialidade
-  nivel
-  ano_contratação
-  
-- manutenção
-  id_manutenção PK
-  id_aeronave FK
-  tipo_manutenção
-  status
-  data_inicio
-  data_fim
+**aeronave**
+Representa as aeronaves que passam por manutenção.
 
-- manutencao_tecnicos
-  id_manutencao FK
-  id_tecnico FK
-  funcao [responsavel, ajudante, pleno]
-  
-6. Métricas que o sistema deve permitir
-- tempo de manutenção
-- numero de manutenções por técnicos
-- aeronaves com mais anutenções
-- manutenções em andamento
+**tecnico**
+Representa os técnicos responsáveis pelas manutenções.
 
+**manutencao**
+Representa as manutenções realizadas nas aeronaves.
 
-    
+**manutencao_tecnicos**
+Tabela que registra quais técnicos participaram de cada manutenção.
+
+---
+
+## 3. Relacionamentos
+
+* Uma aeronave pode ter várias manutenções (1:N)
+* Um técnico pode participar de várias manutenções
+* Uma manutenção pertence a uma aeronave
+* Uma manutenção pode ter vários técnicos
+
+A relação entre técnicos e manutenções é muitos-para-muitos (N:N), resolvida pela tabela `manutencao_tecnicos`.
+
+---
+
+## 4. Estrutura das tabelas
+
+### aeronave
+
+* id_aeronave (PK)
+* registro
+* modelo
+* ano_fabricacao
+* total_horas_voo
+
+### tecnico
+
+* id_tecnico (PK)
+* nome
+* especialidade
+* nivel
+* ano_contratacao
+
+### manutencao
+
+* id_manutencao (PK)
+* id_aeronave (FK)
+* tipo_manutencao
+* status
+* data_inicio
+* data_fim
+
+### manutencao_tecnicos
+
+* id_manutencao (FK)
+* id_tecnico (FK)
+* funcao
+
+---
+
+## 5. Métricas que podem ser analisadas
+
+* tempo de manutenção
+* número de manutenções por técnico
+* aeronaves com mais manutenções
+* manutenções em andamento
+* tempo médio de manutenção
