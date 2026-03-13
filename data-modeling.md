@@ -27,9 +27,10 @@ Tabela que registra quais técnicos participaram de cada manutenção.
 ## 3. Relacionamentos
 
 * Uma aeronave pode ter várias manutenções (1:N)
-* Um técnico pode participar de várias manutenções
-* Uma manutenção pertence a uma aeronave
+* Um técnico pode participar de várias manutenções (N:N)
+* Uma manutenção pertence a uma aeronave 
 * Uma manutenção pode ter vários técnicos
+a relação entre tecnicos e manhutenção é tratada na tabela 
 
 A relação entre técnicos e manutenções é muitos-para-muitos (N:N), resolvida pela tabela `manutencao_tecnicos`.
 
